@@ -1,6 +1,4 @@
-# personal_expense
-
-A new Flutter project.
+# Personal Expense Flutter Application for Beginners
 
 ## Getting Started
 
@@ -14,3 +12,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+#Project preview
+
+![Screenshot](./screenshots/transactions_list.png)
+![Screenshot](./screenshots/add_transaction.png)
+![Screenshot](./screenshots/no_transactions.png)
+
