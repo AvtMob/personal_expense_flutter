@@ -13,6 +13,20 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+# Learn the following things:
+- Learn the fundamentals of Dart and Flutter.
+- Combining Widgets
+- Understanding of column alignment.
+- Custom Model classes
+- Mapping data to widgets
+- Custom List items
+- The styling of different views
+- How to split an app into small widgets
+- Theming
+- AppBar Personalization
+- Creating a Custom Bar Chart
+- DatePicker and the bottom sheet
+
 # Project preview
 
 <p float="left">
