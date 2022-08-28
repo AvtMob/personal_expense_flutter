@@ -15,7 +15,9 @@ samples, guidance on mobile development, and a full API reference.
 
 # Project preview
 
-![Screenshot](./screenshots/transactions_list.png) ![Screenshot](./screenshots/add_transaction.png) ![Screenshot](./screenshots/no_transactions.png)
-
-
+<p float="left">
+  <img src="./screenshots/transactions_list.png" width="100" />
+  <img src="./screenshots/add_transaction.png" width="100" /> 
+  <img src="./screenshots/no_transactions.png" width="100" />
+</p>
 
