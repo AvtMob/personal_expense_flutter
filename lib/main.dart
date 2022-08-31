@@ -32,9 +32,10 @@ class MyApp extends StatelessWidget {
                   fontSize: 16,
                   color: Colors.amber),
               headline4: const TextStyle(
-                  fontFamily: 'Quicksand',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,),
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
             ),
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(
@@ -86,6 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
+  late double defaultTopPadding ;
+  late bool isLandScapeMode ;
+
   void startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,
@@ -98,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  void _addNewTransaction(String txTitle, double txAmount,DateTime date) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime date) {
     final newTX = Transaction(
       title: txTitle,
       amount: txAmount,
@@ -111,41 +115,75 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _deleteTransaction(String txId){
+  void _deleteTransaction(String txId) {
     setState(() {
       _userTransactions.removeWhere((element) => element.id == txId);
     });
   }
+
+
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      // Here we take the value from the MyHomePage object that was created by
+      // the App.build method, and use it to set our appbar title.
+      title: Text(widget.title),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () => startAddNewTransaction(context),
+        )
+      ],
+    );
+    defaultTopPadding = MediaQuery.of(context).padding.top;
+    isLandScapeMode = MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () => startAddNewTransaction(context),
-          )
-        ],
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Chart(_recentTransactions),
-            TransactionsList(_userTransactions,_deleteTransaction),
+            SizedBox(
+              height: getChartHeight(defaultTopPadding, appBar),
+              child: Chart(_recentTransactions),
+            ),
+            SizedBox(
+              height: getListHeight(defaultTopPadding, appBar),
+              child: TransactionsList(_userTransactions, _deleteTransaction),
+            ),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
-        margin: const EdgeInsets.all(16),
+        margin: const EdgeInsets.all(10),
         child: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () => startAddNewTransaction(context)
-        ),
+            child: const Icon(Icons.add),
+            onPressed: () => startAddNewTransaction(context)),
       ),
     );
+  }
+
+  double getChartHeight(double defaultTopPadding, AppBar appBar) {
+
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
+    if (!isLandScapeMode) {
+      return (deviceHeight - appBar.preferredSize.height - defaultTopPadding) *
+          0.19;
+    } else {
+      return (deviceWidth - appBar.preferredSize.height - defaultTopPadding) *
+          0.18;
+    }
+  }
+
+  double getListHeight(double defaultTopPadding, AppBar appBar) {
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
+
+    return (deviceHeight -
+        getChartHeight(defaultTopPadding, appBar) -
+        appBar.preferredSize.height -
+        defaultTopPadding);
   }
 }

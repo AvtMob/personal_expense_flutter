@@ -10,38 +10,35 @@ class TransactionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      child: transactions.isEmpty
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'No transactions added yet!!',
-                  style: Theme.of(context).textTheme.headline4,
+    return transactions.isEmpty
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'No transactions added yet!!',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+               SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
+                child: Image.asset(
+                  'assets/images/waiting.png',
+                  fit: BoxFit.cover,
+                  color: Colors.grey,
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  height: 150,
-                  child: Image.asset(
-                    'assets/images/waiting.png',
-                    fit: BoxFit.cover,
-                    color: Colors.grey,
-                  ),
-                )
-              ],
-            )
-          : ListView.builder(
-              itemBuilder: (context, index) {
-                final tx = transactions[index];
-                //return getCustomListItem(context, tx);
-                return getDefaultListItem(context, tx);
-              },
-              itemCount: transactions.length,
-            ),
-    );
+              )
+            ],
+          )
+        : ListView.builder(
+            itemBuilder: (context, index) {
+              final tx = transactions[index];
+              //return getCustomListItem(context, tx);
+              return getDefaultListItem(context, tx);
+            },
+            itemCount: transactions.length,
+          );
   }
 
   Widget getCustomListItem(BuildContext context, Transaction tx) {
