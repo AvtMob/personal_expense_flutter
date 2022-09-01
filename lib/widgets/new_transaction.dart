@@ -37,13 +37,14 @@ class _NewTransactionState extends State<NewTransaction> {
         return;
       }
       setState(() {
-        this._selectedDate = pickedDate;
+        _selectedDate = pickedDate;
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+
     return SingleChildScrollView(
       child: Card(
         elevation: 5,
