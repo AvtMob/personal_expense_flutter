@@ -1,5 +1,13 @@
 # Personal Expense Flutter Application for Beginners
 
+# Project preview
+
+<p float="left">
+  <img src="./screenshots/transactions_list.png" width="200" />
+  <img src="./screenshots/add_transaction.png" width="200" /> 
+  <img src="./screenshots/no_transactions.png" width="200" />
+</p>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -26,12 +34,4 @@ samples, guidance on mobile development, and a full API reference.
 - AppBar Personalization
 - Creating a Custom Bar Chart
 - DatePicker and the bottom sheet
-
-# Project preview
-
-<p float="left">
-  <img src="./screenshots/transactions_list.png" width="200" />
-  <img src="./screenshots/add_transaction.png" width="200" /> 
-  <img src="./screenshots/no_transactions.png" width="200" />
-</p>
 
